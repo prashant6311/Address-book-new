@@ -4,36 +4,45 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 
-	static Scanner scanner = new Scanner(System.in);
-
 	public static void main(String[] args) {
-		System.out.println("Welcome to master branch ");
 
-		AddressBookMethod addressBookMethod = new AddressBookMethod();
-		boolean factos = true;
+		System.out.println("Welcome to AddressBook master branch");
 
-		while (factos == true) {
+		MultipleAddressBook obj = new MultipleAddressBook();
 
-			System.out.println("if you want to add new contact press 1");
-			System.out.println("if you want to edit any contact press 2");
-			System.out.println("if you want to delete any contact press 3");
-			System.out.println("if you want to display contact press 4");
-			System.out.println("if you want to exit press 5");
-			byte check = scanner.nextByte();
-
-			if (check == 1) {
-				addressBookMethod.newContact();
-			} else if (check == 2) {
-				addressBookMethod.editContact();
-			} else if (check == 3) {
-				addressBookMethod.deleteContact();
-			} else if (check == 4) {
-				System.out.println(addressBookMethod.list.toString());
-			} else if (check == 5) {
-				System.out.println("Thanks for using this Address-book");
-				factos = false;
-			} else {
-				System.out.println("Please choose correct option");
+		while (true) {
+			System.out.println("Enter \n 1. Add  new AddressBook\n 2. Add contact in AddressBook\n "
+					+ "3. edit the contact in AddressBook\n 4. delete the contact in AddressBook\n 5. delete the AddressBook\n "
+					+ "6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 0. To exit");
+			Scanner scanner = new Scanner(System.in);
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1:
+				obj.addAddressBook();
+				break;
+			case 2:
+				obj.addContact();
+				break;
+			case 3:
+				obj.editContactInBook();
+				break;
+			case 4:
+				obj.deleteContactInBook();
+				break;
+			case 5:
+				obj.deleteAddressBook();
+				break;
+			case 6:
+				obj.printBook();
+				break;
+			case 7:
+				obj.printContactsInBook();
+				break;
+			case 0:
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Enter the wrong input");
 			}
 		}
 	}
